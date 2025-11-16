@@ -53,3 +53,23 @@ def get_top_5_movies():
     except Exception as e:
         print(f"Ошибка: {e}")
         return None
+        
+def display_movies(df):
+    print("\n" + "="*80)
+    print(f"{'ТОП-5 ФИЛЬМОВ':^80}")
+    print("="*80)
+    
+    for _, row in df.iterrows():
+        print(f"\n{row['№']}. {row['Название']}")
+        print(f"   Год: {row['Год']}")
+        print(f"   Рейтинг: {row['Рейтинг']}")
+        print(f"   Жанр: {row['Жанр']}")
+        print("-"*80)
+
+if __name__ == '__main__':
+    movies_df = get_top_5_movies()
+    
+    if movies_df is not None and not movies_df.empty:
+        display_movies(movies_df)
+    else:
+        print("Не удалось получить данные о фильмах.")
